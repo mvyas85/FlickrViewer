@@ -58,10 +58,18 @@ public class URLReader extends AsyncTask<String, Void, Void> {
             for(int i = 0; i < (JsonArray_photo.length()); i++) {
                 JSONObject FlickrPhoto = JsonArray_photo.getJSONObject(i);
 
-                Log.v("MRV ------>>>>>>>>>","loop"+i);
                 // Stores objects of Entry class in the Entry List extracted from the JSONObject obtained from the URL
                 // Each entry has 4 attributes: Farm, Server, Photo Id, Secret
-                Data.EntryList.add(new Entry(FlickrPhoto.getString("farm"), FlickrPhoto.getString("server"), FlickrPhoto.getString("id"), FlickrPhoto.getString("secret"),FlickrPhoto.getString("title")));
+                Entry newEntry = new Entry(FlickrPhoto.getString("farm"), FlickrPhoto.getString("server"), FlickrPhoto.getString("id"), FlickrPhoto.getString("secret"),FlickrPhoto.getString("title"));
+
+                boolean duplicate = false;
+                for(int j =0 ; j<Data.EntryList.size();j++ ){
+
+                    if(Data.EntryList.get(j).equals(newEntry))
+                        duplicate = true;
+                }
+                if(!duplicate)
+                    Data.EntryList.add(newEntry);
             }
 
         } catch (JSONException e) {
