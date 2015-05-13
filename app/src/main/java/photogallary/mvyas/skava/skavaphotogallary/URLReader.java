@@ -26,12 +26,14 @@ import java.io.UnsupportedEncodingException;
  * in JSON format and stores the details in a List of Entry class
  */
 
+/*https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=3e4c6cc06971191d5115828a46d2283d&per_page=10&page=1&format=json&nojsoncallback=1
+ */
 public class URLReader extends AsyncTask<String, Void, Void> {
 
 
     String FlickrBaseURL =
-            "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=6336da63e124a7d464cdbb7e32c07525";
-    String per_page = "&per_page=10&page=";
+            "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=3e4c6cc06971191d5115828a46d2283d";
+    String per_page = "&per_page=20&page=";
     String FlickrUrlEnd = "&format=json&nojsoncallback=1";
     String jsonText = null; // The doInBackground function uses this string text to read from the URL which specifies the FlickrAPI method
     static int page_number=0;
